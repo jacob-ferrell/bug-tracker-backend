@@ -19,7 +19,7 @@ Object.keys(routes).forEach(folder => {
   routes[folder].forEach(route => app.use(require(`./routes/${folder}/${route}`)))
 })
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/build/public/index.html'));
+  res.sendFile(path.join(__dirname + '/build/index.html'));
 })
 
 mongoose.connect(dbURI, { useNewUrlParser:true, useUnifiedTopology:true })
