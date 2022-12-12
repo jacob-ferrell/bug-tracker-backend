@@ -1,11 +1,8 @@
 const express = require("express");
-const path = require('path');
-const dotenv = require('dotenv').config({path: path.resolve(__dirname, './config.env')});
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const User = require("./models/user.js");
+const cors = require('cors');
+
 const routes = require('./routes/routes');
 const app = express();
 
@@ -13,7 +10,7 @@ const dbURI =
 `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}
 @bug-tracker0.pjrt0sd.mongodb.net/?retryWrites=true&w=majority`;
 
-
+app.use(cors({origin: 'https://bug-tracker-rcf6.onrender.com'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 Object.keys(routes).forEach(folder => {
