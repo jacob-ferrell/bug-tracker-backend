@@ -18,19 +18,9 @@ app.use(bodyParser.json());
 Object.keys(routes).forEach(folder => {
   routes[folder].forEach(route => app.use(require(`./routes/${folder}/${route}`)))
 })
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/build/index.html'));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/build/public/index.html'));
 })
-
-
-
-//app.use(require('./routes/teamRoutes'));
-//app.use(require('./routes/ticketRoutes'));
-//app.use(require('./routes/userRoutes'));
-
-
-
-
 
 mongoose.connect(dbURI, { useNewUrlParser:true, useUnifiedTopology:true })
 .then (res => {
