@@ -7,7 +7,7 @@ const getTickets = express.Router();
 
 //get all tickets associated with user's projects
 getTickets.route("/getTickets").get(auth.verifyJWT, async (req, res) => {
-    const getProjectIds = async () => {
+  const getProjectIds = async () => {
       return new Promise((resolve) => {
         ProjectUser.find({ user_id: req.user.id }).exec((err, projUsers) => {
           resolve(projUsers.map((e) => e.project_id));

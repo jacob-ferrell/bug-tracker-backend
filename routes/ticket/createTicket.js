@@ -55,7 +55,7 @@ createTicket.route("/createTicket").post(auth.verifyJWT, async (req, res) => {
     let newTicket = new Ticket({
       ...ticket,
       creator: req.user.id,
-      demo
+      demo,
     });
     await newTicket.save();
 
@@ -80,7 +80,6 @@ createTicket.route("/createTicket").post(auth.verifyJWT, async (req, res) => {
     await pushNotifications(req.user, projectManagers, managerMessage);
     if (developers.length)
       await pushNotifications(req.user, developers, developerMessage);
-
     return res.json({ message: "Sucessfully created ticket" });
   } catch (err) {
     console.log(err);
