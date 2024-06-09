@@ -12,6 +12,9 @@ const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWOR
 @bug-tracker0.pjrt0sd.mongodb.net/?retryWrites=true&w=majority`;
 
 const allowedDomains = ['https://bugtracker.jacob-ferrell.com', 'https://bug-tracker-rcf6.onrender.com']
+if (process.env.NODE_ENV == "development") {
+  allowedDomains.push("http://localhost:3000");
+}
 
 app.use(express.static(path.join(__dirname, "/build")));
 //app.use(cors());
