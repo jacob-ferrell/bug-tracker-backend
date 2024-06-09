@@ -7,13 +7,12 @@ const ProjectUser = require("../../models/projectUser");
 const UserInfo = require("../../models/userInfo");
 const TeamMember = require("../../models/teamMember");
 const User = require("../../models/user");
-const auth = require("../../verifyJWT");
 
 const express = require("express");
 
 const deleteDemoData = express.Router();
 
-deleteDemoData.route("/deleteDemoData").get(async (req, res) => {
+deleteDemoData.route("/demo").delete(async (req, res) => {
   const models = [
     Project,
     Ticket,
